@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "arvore.h"
+#include "headers/aux.h"
+#include "headers/arvore.h"
 
 int main() {
     No* raiz = inicializar_arvore();
     int opcao;
 
     do {
-        printf("\n1. Carregar Livros do CSV\n2. Inserir Livro\n3. Buscar por Gênero\n4. Exibir Árvore\n5. Sair\n");
-        printf("Escolha uma opção: ");
+        printMenu();
         scanf("%d", &opcao);
-
+        limparTerminal();
+        opcaoSelecionada(opcao);
         switch (opcao) {
             case 1: {
                 char arquivo[50];

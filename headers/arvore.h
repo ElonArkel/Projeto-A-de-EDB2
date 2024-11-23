@@ -25,4 +25,4 @@ No* carregar_livros(char* nome_arquivo, No* raiz);
 void exibir_arvore(No* raiz);
 void liberar_arvore(No* raiz);
 
-#endif
+#endif // ARVORE_H
