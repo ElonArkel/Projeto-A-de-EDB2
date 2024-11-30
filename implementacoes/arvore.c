@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../cabecalhos/aux.h"
 #include "../cabecalhos/arvore.h"
 
 No* inicializar_arvore() {
@@ -35,7 +36,8 @@ void buscar_por_genero(No* raiz, char genero[]) {
 No* carregar_livros(char* nome_arquivo, No* raiz) {
     FILE* arquivo = fopen(nome_arquivo, "r");
     if (!arquivo) {
-        printf("Erro ao abrir o arquivo.\n");
+        perror("Erro ao abrir o arquivo.");
+        listarCSV();
         return raiz;
     } else {
         printf("O arquivo %s foi carregado com sucesso\n", nome_arquivo);
