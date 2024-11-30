@@ -36,8 +36,8 @@ $(BUILD_DIR):
 
 # Limpeza dos arquivos gerados
 clean:
+	rm -f *.o
 	rm -rf $(BUILD_DIR) $(EXECUTABLE)
-
 # Regra para executar o programa
 run: $(EXECUTABLE)
 	./$(EXECUTABLE)
