@@ -1,28 +1,43 @@
+# Nome do executável
+EXECUTABLE = programa
+
+# Diretórios
+SRC_DIR = implementacoes
+HEADER_DIR = cabecalhos
+BUILD_DIR = build
+
+# Compilador e flags
 CC = gcc
-CFLAGS = -c
-LDFLAGS =
-SRC_DIR = implementations
-OBJ_DIR = objetos
-BIN = programa
+CFLAGS = -Wall -Wextra -I$(HEADER_DIR)
 
-SOURCES = main.c $(SRC_DIR)/aux.c $(SRC_DIR)/arvore.c
-OBJECTS = $(OBJ_DIR)/main.o $(OBJ_DIR)/aux.o $(OBJ_DIR)/arvore.o
+# Fontes e objetos
+SOURCES = main.c $(wildcard $(SRC_DIR)/*.c)
+OBJECTS = $(patsubst %.c, $(BUILD_DIR)/%.o, $(notdir $(SOURCES)))
 
-all: $(BIN)
-	./$(BIN)
+# Regras principais
+all: $(BUILD_DIR) $(EXECUTABLE)
+	./$(EXECUTABLE)
 	$(MAKE) clean
 
-$(BIN): $(OBJECTS)
-	$(CC) -o $(BIN) $(OBJECTS)
+# Criação do executável
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
-$(OBJ_DIR)/main.o: main.c
-	$(CC) $(CFLAGS) -o $@ $<
+# Compilação dos arquivos .c para .o
+$(BUILD_DIR)/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/aux.o: $(SRC_DIR)/aux.c
-	$(CC) $(CFLAGS) -o $@ $<
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/arvore.o: $(SRC_DIR)/arvore.c
-	$(CC) $(CFLAGS) -o $@ $<
+# Criar diretório build se não existir
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
+# Limpeza dos arquivos gerados
 clean:
-	rm -f $(OBJ_DIR)/*.o $(BIN)
+	rm -rf $(BUILD_DIR) $(EXECUTABLE)
+
+# Regra para executar o programa
+run: $(EXECUTABLE)
+	./$(EXECUTABLE)

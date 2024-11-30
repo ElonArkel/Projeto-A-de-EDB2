@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../headers/aux.h"
+#include "../cabecalhos/aux.h"
 
 #ifdef __unix__         
     #include <unistd.h>

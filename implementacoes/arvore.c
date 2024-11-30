@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/arvore.h"
+#include "../cabecalhos/arvore.h"
 
 No* inicializar_arvore() {
     return NULL;

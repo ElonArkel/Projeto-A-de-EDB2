@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers/aux.h"
-#include "headers/arvore.h"
+#include "cabecalhos/aux.h"
+#include "cabecalhos/arvore.h"
 
 int main() {
     No* raiz = inicializar_arvore();
