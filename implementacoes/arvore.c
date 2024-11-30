@@ -37,6 +37,8 @@ No* carregar_livros(char* nome_arquivo, No* raiz) {
     if (!arquivo) {
         printf("Erro ao abrir o arquivo.\n");
         return raiz;
+    } else {
+        printf("O arquivo %s foi carregado com sucesso\n", nome_arquivo);
     }
 
     char linha[200];
